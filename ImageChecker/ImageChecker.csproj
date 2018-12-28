@@ -42,9 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\FolderExtensions.cs" />
+    <Compile Include="Helper\NetResource.cs" />
+    <Compile Include="Helper\NetworkConnection.cs" />
+    <Compile Include="Helper\ResourceDisplayTypeEnum.cs" />
+    <Compile Include="Helper\ResourceScope.cs" />
+    <Compile Include="Helper\ResourceTypeEnum.cs" />
     <Compile Include="IImageManager.cs" />
     <Compile Include="ImageManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
