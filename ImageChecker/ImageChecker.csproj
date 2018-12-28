@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\FolderExtensions.cs" />
     <Compile Include="IImageManager.cs" />
     <Compile Include="ImageManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
