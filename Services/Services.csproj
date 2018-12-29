@@ -7,8 +7,8 @@
     <ProjectGuid>{D518EDFC-6632-4DDF-B61E-8AF5434C2A0D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ImageChecker</RootNamespace>
-    <AssemblyName>ImageChecker</AssemblyName>
+    <RootNamespace>utility-for-directory</RootNamespace>
+    <AssemblyName>utility-for-directory</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
