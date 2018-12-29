@@ -4,6 +4,7 @@ using ImageChecker.Models.Response;
 using ImageChecker.Services;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace ImageChecker
 {
@@ -53,6 +54,12 @@ namespace ImageChecker
 
             return response;
         }
+
+        public async Task<MovePhotoResponseModel> MovePhotoAsync(MovePhotoRequestModel request)
+        {
+            throw new NotImplementedException();
+        }
+
         public DeleteDirectoryResponseModel DeleteDirectory(DeleteDirectoryRequestModel request)
         {
             DeleteDirectoryResponseModel response = new DeleteDirectoryResponseModel()
@@ -90,6 +97,11 @@ namespace ImageChecker
             }
 
             return response;
+        }
+
+        public async Task<DeleteDirectoryResponseModel> DeleteDirectoryAsync(DeleteDirectoryRequestModel request)
+        {
+            throw new NotImplementedException();
         }
     }
 }
