@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\FolderExtensions.cs" />
+    <Compile Include="FolderServices.cs" />
     <Compile Include="Helper\NetResource.cs" />
     <Compile Include="Helper\NetworkConnection.cs" />
     <Compile Include="Helper\ResourceDisplayTypeEnum.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Models\Response\DeleteDirectoryResponseModel.cs" />
     <Compile Include="Models\Response\MovePhotoResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IFolderServices.cs" />
     <Compile Include="Services\IImageServices.cs" />
   </ItemGroup>
   <ItemGroup />
