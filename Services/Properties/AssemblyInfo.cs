@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("utility-for-directory")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Directory creating, moving and deleting.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("@iammustafaozdemir")]
 [assembly: AssemblyProduct("utility-for-directory")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
