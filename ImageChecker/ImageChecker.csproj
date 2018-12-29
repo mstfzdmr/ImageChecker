@@ -47,13 +47,13 @@
     <Compile Include="Helper\ResourceDisplayTypeEnum.cs" />
     <Compile Include="Helper\ResourceScope.cs" />
     <Compile Include="Helper\ResourceTypeEnum.cs" />
-    <Compile Include="IImageManager.cs" />
-    <Compile Include="ImageManager.cs" />
+    <Compile Include="ImageServices.cs" />
     <Compile Include="Models\Request\DeleteDirectoryRequestModel.cs" />
     <Compile Include="Models\Request\MovePhotoRequestModel.cs" />
     <Compile Include="Models\Response\DeleteDirectoryResponseModel.cs" />
     <Compile Include="Models\Response\MovePhotoResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IImageServices.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
