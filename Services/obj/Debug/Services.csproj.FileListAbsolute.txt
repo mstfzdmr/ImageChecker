@@ -1,6 +1,0 @@
-C:\Users\mustafa.ozdemir\source\repos\utility-for-directory\Services\bin\Debug\utility-for-directory.dll
-C:\Users\mustafa.ozdemir\source\repos\utility-for-directory\Services\bin\Debug\utility-for-directory.pdb
-C:\Users\mustafa.ozdemir\source\repos\utility-for-directory\Services\obj\Debug\Services.csprojAssemblyReference.cache
-C:\Users\mustafa.ozdemir\source\repos\utility-for-directory\Services\obj\Debug\Services.csproj.CoreCompileInputs.cache
-C:\Users\mustafa.ozdemir\source\repos\utility-for-directory\Services\obj\Debug\utility-for-directory.dll
-C:\Users\mustafa.ozdemir\source\repos\utility-for-directory\Services\obj\Debug\utility-for-directory.pdb
