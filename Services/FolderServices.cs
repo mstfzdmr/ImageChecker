@@ -12,13 +12,9 @@ namespace ImageChecker
     {
         public MovePhotoResponseModel MovePhoto(MovePhotoRequestModel request)
         {
-            MovePhotoResponseModel response = new MovePhotoResponseModel();
-
             if (string.IsNullOrEmpty(request.WriteFilePath))
             {
-                response.Message = "Write File Path is null!";
-                response.IsSuccess = false;
-                return response;
+                throw new ArgumentNullException(nameof(request.WriteFilePath), "Value cannot be null.");
             }
 
             try
@@ -44,15 +40,19 @@ namespace ImageChecker
                     }
                 }
 
-                response.IsSuccess = true;
+                return new MovePhotoResponseModel
+                {
+                    IsSuccess = true
+                };
             }
             catch (Exception exception)
             {
-                response.Message = exception.Message;
-                response.IsSuccess = false;
+                return new MovePhotoResponseModel
+                {
+                    Message = exception.Message,
+                    IsSuccess = false
+                };
             }
-
-            return response;
         }
 
         public async Task<MovePhotoResponseModel> MovePhotoAsync(MovePhotoRequestModel request)

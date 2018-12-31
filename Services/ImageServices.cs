@@ -12,6 +12,11 @@ namespace ImageChecker
     {
         public bool ImageCheck(string imagePath)
         {
+            if (string.IsNullOrEmpty(imagePath))
+            {
+                throw new ArgumentNullException(nameof(imagePath), "Value cannot be null.");
+            }
+
             using (var countdownEvent = new CountdownEvent(1))
             {
                 var callBackResult = new ConcurrentQueue<Tuple<string, bool>>();
@@ -32,8 +37,7 @@ namespace ImageChecker
         {
             if (!imagePaths.Any())
             {
-                notFoundedUrls = new List<string>();
-                return null;
+                throw new ArgumentNullException(nameof(imagePaths), "Value cannot be null.");
             }
 
             using (var countdownEvent = new CountdownEvent(imagePaths.Count))
@@ -57,7 +61,7 @@ namespace ImageChecker
                 return callBackResult.ToList();
             }
         }
-        
+
         #region Private Methods
         private void ValidateUrlAsync(string imagePath, Action<string, bool> callback)
         {
@@ -90,7 +94,7 @@ namespace ImageChecker
             {
                 callback(imagePath, false);
             }
-        } 
+        }
         #endregion
     }
 }
