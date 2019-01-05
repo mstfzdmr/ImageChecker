@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Threading;
@@ -33,6 +34,7 @@ namespace ImageChecker
                 return callBackResult.FirstOrDefault().Item2;
             }
         }
+
         public List<Tuple<string, bool>> ImageCheck(List<string> imagePaths, out List<string> notFoundedUrls)
         {
             if (!imagePaths.Any())
@@ -62,7 +64,19 @@ namespace ImageChecker
             }
         }
 
+        public int CompareWith(Bitmap source, Bitmap target)
+        {
+            if (source.Width != target.Width)
+                return int.MaxValue;
+
+            if (source.Height != target.Height)
+                return int.MaxValue;
+
+            return int.MinValue;
+        }
+
         #region Private Methods
+
         private void ValidateUrlAsync(string imagePath, Action<string, bool> callback)
         {
             var webRequest = (HttpWebRequest)WebRequest.Create(imagePath);
@@ -95,6 +109,7 @@ namespace ImageChecker
                 callback(imagePath, false);
             }
         }
+
         #endregion
     }
 }
