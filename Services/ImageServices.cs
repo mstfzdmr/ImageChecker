@@ -3,6 +3,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Net;
 using System.Threading;
@@ -64,15 +65,14 @@ namespace ImageChecker
             }
         }
 
+        public int CompareWith(string sourceUrl, string targetUrl)
+        {
+            return Comparisons(new Bitmap(sourceUrl), new Bitmap(targetUrl));
+        }
+
         public int CompareWith(Bitmap source, Bitmap target)
         {
-            if (source.Width != target.Width)
-                return int.MaxValue;
-
-            if (source.Height != target.Height)
-                return int.MaxValue;
-
-            return int.MinValue;
+            return Comparisons(source, target);
         }
 
         #region Private Methods
@@ -108,6 +108,62 @@ namespace ImageChecker
             {
                 callback(imagePath, false);
             }
+        }
+
+        private unsafe int Comparisons(Bitmap source, Bitmap target)
+        {
+            int percentageByDifference = 0;
+
+            if (source.Width != target.Width)
+                return percentageByDifference;
+
+            if (source.Height != target.Height)
+                return percentageByDifference;
+
+            var sourceLockBits = source.LockBits(new Rectangle(0, 0, source.Width, source.Height), ImageLockMode.ReadOnly, source.PixelFormat);
+            var targetLockBits = target.LockBits(new Rectangle(0, 0, target.Width, target.Height), ImageLockMode.ReadOnly, target.PixelFormat);
+
+            float difference = 0;
+
+            try
+            {
+                byte sourceBitsPerPixel = (byte)Image.GetPixelFormatSize(sourceLockBits.PixelFormat);
+                byte targetBitsPerPixel = (byte)Image.GetPixelFormatSize(targetLockBits.PixelFormat);
+
+                byte* sourcePointer = (byte*)sourceLockBits.Scan0.ToPointer();
+                byte* targetPointer = (byte*)targetLockBits.Scan0.ToPointer();
+
+                for (var i = 0; i < sourceLockBits.Height; ++i)
+                {
+                    for (var j = 0; j < sourceLockBits.Width; ++j)
+                    {
+                        byte* sourceData = sourcePointer + (i * sourceLockBits.Stride) + (j * (sourceBitsPerPixel / 8));
+                        byte* targetData = targetPointer + (i * targetLockBits.Stride) + (j * (targetBitsPerPixel / 8));
+
+                        var sourceR = sourceData[0];
+                        var sourceG = sourceData[1];
+                        var sourceB = sourceData[2];
+                        var targetR = targetData[0];
+                        var targetG = targetData[1];
+                        var targetB = targetData[2];
+
+                        difference += (float)Math.Abs(sourceR - targetR) / 255;
+                        difference += (float)Math.Abs(sourceG - targetG) / 255;
+                        difference += (float)Math.Abs(sourceB - targetB) / 255;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                percentageByDifference = 0;
+            }
+            finally
+            {
+                source.UnlockBits(sourceLockBits);
+                target.UnlockBits(targetLockBits);
+            }
+
+            return percentageByDifference;
         }
 
         #endregion

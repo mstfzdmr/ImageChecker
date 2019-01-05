@@ -8,6 +8,7 @@ namespace ImageChecker.Services
     {
         bool ImageCheck(string imagePath);
         List<Tuple<string, bool>> ImageCheck(List<string> imagePaths, out List<string> notFoundedUrls);
+        int CompareWith(string sourceUrl, string targetUrl);
         int CompareWith(Bitmap source, Bitmap target);
     }
 }
