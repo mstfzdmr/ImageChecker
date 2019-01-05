@@ -52,6 +52,7 @@
     <Compile Include="Helper\ResourceTypeEnum.cs" />
     <Compile Include="ImageServices.cs" />
     <Compile Include="Models\Request\DeleteDirectoryRequestModel.cs" />
+    <Compile Include="Models\Request\ImageCompareRequestModel.cs" />
     <Compile Include="Models\Request\MovePhotoRequestModel.cs" />
     <Compile Include="Models\Response\DeleteDirectoryResponseModel.cs" />
     <Compile Include="Models\Response\MovePhotoResponseModel.cs" />

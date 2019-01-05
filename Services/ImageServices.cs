@@ -1,4 +1,6 @@
-﻿using ImageChecker.Services;
+﻿using ImageChecker.Extensions;
+using ImageChecker.Services;
+using Models.Request;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -65,9 +67,12 @@ namespace ImageChecker
             }
         }
 
-        public int CompareWith(string sourceUrl, string targetUrl)
+        public int CompareWith(ImageCompareRequestModel request)
         {
-            return Comparisons(new Bitmap(sourceUrl), new Bitmap(targetUrl));
+            var sourceBitmap = FolderExtensions.GetBitmap(request.Source.FileName, request.Source.NetworkName, request.Source.NetworkCredential);
+            var targetBitmap = FolderExtensions.GetBitmap(request.Target.FileName, request.Target.NetworkName, request.Target.NetworkCredential);
+
+            return Comparisons(sourceBitmap, targetBitmap);
         }
 
         public int CompareWith(Bitmap source, Bitmap target)
