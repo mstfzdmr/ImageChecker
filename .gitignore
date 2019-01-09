@@ -3,4 +3,9 @@
 ################################################################################
 
 /.vs
-/utility-for-directory/obj
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
