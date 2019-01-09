@@ -10,7 +10,7 @@ namespace Tests
     public class ImageServicesTests
     {
         [Theory, InlineData(new object[] { "" })]
-        public void ImageCheck__ShouldArgumentNullException_WhenImagePathIsNull(string imagePath)
+        public void ImageCheck_WhenImagePathIsNull_ThenShouldBeArgumentNullException(string imagePath)
         {
             IImageServices imageServices = new ImageServices();
             var result = Record.Exception(() => imageServices.ImageCheck(imagePath));
@@ -22,7 +22,7 @@ namespace Tests
         }
 
         [Theory, ClassData(typeof(ImagePathIsNullTheoryData))]
-        public void ImageCheck__ShouldArgumentNullException_WhenImagePathsIsNull(List<string> imagePaths)
+        public void ImageCheck_WhenImagePathsIsNull_ThenShouldBeArgumentNullException(List<string> imagePaths)
         {
             IImageServices imageServices = new ImageServices();
             var notFoundedUrls = new List<string>();
